@@ -27,8 +27,10 @@ $(".saveBtn").on("click", function(event) {
     //console.log(event.target.parentElement.attributes[0].value);
 });
 
+// Clear button to empty local storage and reload the page
 $(".clearBtn").on("click", function(event) {
     window.localStorage.clear();
+    document.location.reload();
 });
 
 // Function to populate calendar items, if they are in local storage, on document load using 'ready' method

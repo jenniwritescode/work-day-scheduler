@@ -22,8 +22,13 @@ $(timeBlock).each(function (i, hour) {
 
 // Save calendar item to local storage when save button is clicked
 $(".saveBtn").on("click", function(event) {
-    var calItem = event.target.parentElement.previousElementSibling.children[0].value;
-    localStorage.setItem(event.target.attributes[0].value, calItem);
+    var calItem = event.target.parentElement.parentElement.previousElementSibling.children[0].value;
+    localStorage.setItem(event.target.parentElement.attributes[0].value, calItem);
+    //console.log(event.target.parentElement.attributes[0].value);
+});
+
+$(".clearBtn").on("click", function(event) {
+    window.localStorage.clear();
 });
 
 // Function to populate calendar items, if they are in local storage, on document load using 'ready' method
@@ -80,6 +85,13 @@ $(document).ready(function () {
       if (localStorage["saveFour"] !== null && localStorage["saveFour"] !== undefined) {
         var calItemFour = $("<p>" + localStorage["saveFour"] + "</p>");
         $("#textFour").append(calItemFour[0].innerText);
+      } 
+      else {
+        ("");
+      }
+      if (localStorage["saveFive"] !== null && localStorage["saveFive"] !== undefined) {
+        var calItemFive = $("<p>" + localStorage["saveFive"] + "</p>");
+        $("#textFive").append(calItemFive[0].innerText);
       } 
       else {
         ("");

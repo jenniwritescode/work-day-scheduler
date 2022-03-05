@@ -2,11 +2,11 @@
 var currentDate = moment().format("MMMM Do YYYY");
 $("#currentDay").text(currentDate);
 
-// Set variables for time block section, use Moment for current time
+// Set variables for time block section, use Moment.js for current time
 var timeBlock = $(".hour");
 var timeNow = parseInt(moment().format("H"));
 
-// Decide if current time is past, present, or future in order to apply colors to time blocks
+// Decide if current time is past, present, or future in order to apply corresponding color to time blocks
 $(timeBlock).each(function (i, hour) {
     var hourBlock = parseInt($(this).attr("id"));
     if (hourBlock === timeNow) {
@@ -24,11 +24,9 @@ $(timeBlock).each(function (i, hour) {
 $(".saveBtn").on("click", function(event) {
     var calItem = event.target.parentElement.previousElementSibling.children[0].value;
     localStorage.setItem(event.target.attributes[0].value, calItem);
-    // Check to see if calendar item is saved in local storage
-    console.log(calItem);
 });
 
-// Function to populate calendar items if they are in local storage using ready method
+// Function to populate calendar items, if they are in local storage, on document load using 'ready' method
 $(document).ready(function () {
     if (localStorage["saveNine"] !== null && localStorage["saveNine"] !== undefined) {
       var calItemNine = $("<p>" + localStorage["saveNine"] + "</p>");
